@@ -62,7 +62,7 @@ export default function Navbar({ user, onLogout, onNavigateToAuth }) {
                 onClick={onNavigateToAuth}
                 className="bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-semibold text-xs px-3.5 py-1.5 rounded-lg shadow-lg shadow-indigo-500/25 transition-all"
               >
-                Play
+                Login
               </button>
             )}
           </div>
