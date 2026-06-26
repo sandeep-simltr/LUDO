@@ -37,15 +37,6 @@ export default function Navbar({ user, onLogout, onNavigateToAuth }) {
           </nav>
 
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-slate-900 border border-slate-800 text-[11px]">
-              <span className={`w-2 h-2 rounded-full ${
-                serverStatus === 'online' ? 'bg-emerald-500 animate-pulse' :
-                serverStatus === 'connecting' ? 'bg-amber-500 animate-pulse' : 'bg-rose-500'
-              }`} />
-              <span className="hidden sm:inline text-slate-400 font-medium capitalize">
-                {serverStatus}
-              </span>
-            </div>
             
             {user ? (
               <div className="flex items-center gap-3">

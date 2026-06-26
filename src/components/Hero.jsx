@@ -25,30 +25,30 @@ export default function Hero() {
       <div className="absolute top-10 left-1/4 w-[300px] h-[300px] bg-indigo-500/10 blur-3xl rounded-full -z-10 animate-pulse" />
       <div className="absolute top-20 right-1/4 w-[350px] h-[350px] bg-violet-500/10 blur-3xl rounded-full -z-10 animate-pulse" style={{ animationDelay: '1s' }} />
 
-      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-xs font-semibold mb-8 hover:border-indigo-500/30 transition-all duration-300">
-        <Sparkles size={14} className="text-violet-450" />
-        <span>Ultimate Ludo experience on MERN stack</span>
+      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-emerald-400 text-xs font-semibold mb-8 hover:border-indigo-500/30 transition-all duration-300">
+        <Sparkles size={14} className="text-amber-400" />
+        <span>100% Secure • Instant UPI Withdrawals • Real Cash Games</span>
       </div>
 
       <h1 className="text-4xl sm:text-6xl md:text-8xl font-black tracking-tight mb-6 leading-none">
-        Welcome to the <br />
-        <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-sky-400 bg-clip-text text-transparent">
-          Ludo Arena
+        Play Ludo Arena,<br />
+        <span className="bg-gradient-to-r from-emerald-400 via-indigo-400 to-violet-400 bg-clip-text text-transparent">
+          Double Your Cash!
         </span>
       </h1>
 
       <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-        Challenge players worldwide in real-time. Roll the dice, plan your moves, capture tokens, and claim the championship crown.
+        India's ultimate 1v1 Ludo cash battleground. Challenge players with custom coin stakes, capture tokens, win matches, and cash out double earnings instantly.
       </p>
 
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 w-full max-w-md">
-        <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold px-8 py-4 rounded-2xl shadow-xl shadow-indigo-500/20 transition-all duration-300 hover:-translate-y-1">
+        <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-bold px-8 py-4 rounded-2xl shadow-xl shadow-emerald-500/20 transition-all duration-300 hover:-translate-y-1">
           <Play size={20} fill="currentColor" />
-          <span>Quick Match</span>
+          <span>Play Cash Games</span>
         </button>
         <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-slate-200 font-bold px-8 py-4 rounded-2xl transition-all duration-300 hover:-translate-y-1">
           <Users size={20} className="text-indigo-400" />
-          <span>Custom Room</span>
+          <span>Host Custom Match</span>
         </button>
       </div>
 
