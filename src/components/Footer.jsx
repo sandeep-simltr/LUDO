@@ -2,7 +2,7 @@ import { Shield, Sparkles, MessageSquare, ShieldCheck, Cpu, Globe } from 'lucide
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-slate-900 bg-slate-950/80 backdrop-blur-md pt-12 pb-24 md:pt-20 md:pb-10 text-slate-500 overflow-hidden">
+    <footer className="relative border-t border-slate-900 bg-slate-950/80 backdrop-blur-md pt-12 pb-10 md:pt-20 md:pb-10 text-slate-500 overflow-hidden">
       {/* Background glow spot */}
       <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[400px] h-[150px] bg-indigo-500/5 blur-[80px] rounded-full pointer-events-none -z-10" />
 
