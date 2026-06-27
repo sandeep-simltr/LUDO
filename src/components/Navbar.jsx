@@ -61,24 +61,26 @@ export default function Navbar({ user, onLogout, onNavigateToAuth }) {
       </header>
 
       {/* Floating Bottom Nav for Mobile */}
-      <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-sm bg-slate-950/90 border border-slate-800/80 backdrop-blur-lg rounded-2xl shadow-2xl px-6 py-3 flex items-center justify-between">
-        <a href="#hero" className="flex flex-col items-center gap-1 text-[10px] text-slate-400 hover:text-indigo-400 transition-colors">
-          <span className="text-base">🏠</span>
-          <span>Home</span>
-        </a>
-        <a href="#features" className="flex flex-col items-center gap-1 text-[10px] text-slate-400 hover:text-indigo-400 transition-colors">
-          <span className="text-base">⭐</span>
-          <span>Features</span>
-        </a>
-        <a href="#lobbies" className="flex flex-col items-center gap-1 text-[10px] text-slate-400 hover:text-indigo-400 transition-colors">
-          <span className="text-base">🎮</span>
-          <span>Lobbies</span>
-        </a>
-        <a href="#leaderboard" className="flex flex-col items-center gap-1 text-[10px] text-slate-400 hover:text-indigo-400 transition-colors">
-          <span className="text-base">🏆</span>
-          <span>Ranks</span>
-        </a>
-      </div>
+      {!user && (
+        <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-sm bg-slate-950/90 border border-slate-800/80 backdrop-blur-lg rounded-2xl shadow-2xl px-6 py-3 flex items-center justify-between">
+          <a href="#hero" className="flex flex-col items-center gap-1 text-[10px] text-slate-400 hover:text-indigo-400 transition-colors">
+            <span className="text-base">🏠</span>
+            <span>Home</span>
+          </a>
+          <a href="#features" className="flex flex-col items-center gap-1 text-[10px] text-slate-400 hover:text-indigo-400 transition-colors">
+            <span className="text-base">⭐</span>
+            <span>Features</span>
+          </a>
+          <a href="#lobbies" className="flex flex-col items-center gap-1 text-[10px] text-slate-400 hover:text-indigo-400 transition-colors">
+            <span className="text-base">🎮</span>
+            <span>Lobbies</span>
+          </a>
+          <a href="#leaderboard" className="flex flex-col items-center gap-1 text-[10px] text-slate-400 hover:text-indigo-400 transition-colors">
+            <span className="text-base">🏆</span>
+            <span>Ranks</span>
+          </a>
+        </div>
+      )}
     </>
   );
 }

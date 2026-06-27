@@ -8,6 +8,7 @@ import {
 
 export default function Dashboard({ user, onUpdateUser }) {
   const [activeTab, setActiveTab] = useState('play');
+  const [menuOpen, setMenuOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [betCoins, setBetCoins] = useState(100);
   const [matching, setMatching] = useState(false);
@@ -97,7 +98,7 @@ export default function Dashboard({ user, onUpdateUser }) {
     <div className="max-w-6xl mx-auto px-4 py-8 pb-28 md:pb-12 flex flex-col md:flex-row gap-8">
       
       {/* Sidebar Navigation */}
-      <aside className="w-full md:w-72 flex flex-col gap-3 bg-slate-900/30 border border-slate-900 rounded-3xl p-6 h-fit backdrop-blur-xl relative">
+      <aside className="hidden md:flex flex-col w-72 gap-3 bg-slate-900/30 border border-slate-900 rounded-3xl p-6 h-fit backdrop-blur-xl relative">
         <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/5 to-transparent rounded-3xl pointer-events-none" />
         
         {/* User Card */}
@@ -159,50 +160,50 @@ export default function Dashboard({ user, onUpdateUser }) {
                   <div>
                     <h2 className="text-2xl font-black text-white flex items-center gap-2">
                       <Gamepad2 size={24} className="text-indigo-400" />
-                      Select Battle Stakes
+                      1v1 Online Battles
                     </h2>
-                    <p className="text-xs text-slate-400 mt-1">Choose entry coins. Match matches 1v1 with real-time players.</p>
+                    <p className="text-xs text-slate-400 mt-1">Select your entry fee. Battle 1v1 against a real player and double your money.</p>
                   </div>
-                  <div className="hidden lg:flex items-center gap-1.5 px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 rounded-full text-xs font-semibold">
+                  <div className="hidden lg:flex items-center gap-1.5 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-full text-xs font-semibold">
                     <Sparkles size={12} />
-                    <span>Double rewards active</span>
+                    <span>Double Rewards Active</span>
                   </div>
                 </div>
 
                 {/* Stakes Grid */}
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-                  {[50, 100, 200, 500, 1000, 3000].map((coins) => (
+                  {[50, 100, 200, 500, 1000, 2000].map((rupees) => (
                     <div 
-                      key={coins}
-                      onClick={() => setBetCoins(coins)}
+                      key={rupees}
+                      onClick={() => setBetCoins(rupees)}
                       className={`group relative cursor-pointer p-5 rounded-2xl border transition-all duration-300 ${
-                        betCoins === coins 
+                        betCoins === rupees 
                           ? 'bg-slate-900/80 border-indigo-500 shadow-xl shadow-indigo-500/5' 
                           : 'bg-slate-900/30 border-slate-800 hover:border-slate-700'
                       }`}
                     >
                       {/* Glow outline on active */}
-                      {betCoins === coins && (
+                      {betCoins === rupees && (
                         <div className="absolute inset-0 bg-indigo-500/5 rounded-2xl pointer-events-none" />
                       )}
 
                       <div className="flex items-center justify-between mb-4">
-                        <span className="text-[9px] font-bold text-slate-500 tracking-widest uppercase">STAKE LEVEL</span>
+                        <span className="text-[9px] font-bold text-slate-500 tracking-widest uppercase">MATCH FEE</span>
                         <div className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${
-                          betCoins === coins ? 'border-indigo-500 bg-indigo-500/20' : 'border-slate-800'
+                          betCoins === rupees ? 'border-indigo-500 bg-indigo-500/20' : 'border-slate-800'
                         }`}>
-                          {betCoins === coins && <div className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />}
+                          {betCoins === rupees && <div className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />}
                         </div>
                       </div>
 
                       <div className="flex items-center gap-2">
-                        <Coins size={20} className="text-amber-400 group-hover:scale-110 transition-transform" />
-                        <span className="text-lg font-black text-white">{coins}</span>
+                        <span className="text-2xl font-black text-emerald-400 font-sans">₹</span>
+                        <span className="text-2xl font-black text-white">{rupees}</span>
                       </div>
                       
                       <div className="mt-4 pt-3 border-t border-slate-850 flex justify-between items-center text-[10px]">
-                        <span className="text-slate-500">Winner pool</span>
-                        <span className="font-bold text-emerald-400">{coins * 1.8} Coins</span>
+                        <span className="text-slate-500">Winner Takes</span>
+                        <span className="font-bold text-emerald-400">₹{rupees * 1.8}</span>
                       </div>
                     </div>
                   ))}
@@ -212,16 +213,16 @@ export default function Dashboard({ user, onUpdateUser }) {
                 <div className="bg-slate-900/40 border border-slate-850 p-6 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
                   <div className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-indigo-500 to-violet-500" />
                   <div>
-                    <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest block">Stakes Selection</span>
-                    <h3 className="text-lg font-black text-white mt-1">Lobby entry: {betCoins} Coins</h3>
-                    <p className="text-[11px] text-slate-500 mt-0.5">Platform service fee of 10% applies to final match pot pool.</p>
+                    <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest block">Battle Setup</span>
+                    <h3 className="text-lg font-black text-white mt-1">Match Entry Fee: ₹{betCoins}</h3>
+                    <p className="text-[11px] text-slate-500 mt-0.5">Platform maintenance fee of 10% is charged on the final prize pool.</p>
                   </div>
                   
                   <button 
                     onClick={startMatchmaking}
                     className="w-full md:w-auto bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-500 hover:to-pink-500 text-white font-bold text-sm px-8 py-3.5 rounded-2xl shadow-xl shadow-indigo-500/20 transition-all hover:-translate-y-0.5"
                   >
-                    Find Player Match
+                    Find Match Partner
                   </button>
                 </div>
               </div>
@@ -235,13 +236,13 @@ export default function Dashboard({ user, onUpdateUser }) {
                       <div className="absolute inset-0 border border-indigo-500/30 rounded-full animate-ping pointer-events-none" />
                       <div className="absolute inset-2 border-2 border-indigo-500/20 rounded-full animate-pulse" />
                       <div className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-indigo-600 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-500/30">
-                        <span className="font-extrabold text-2xl text-white">A</span>
+                        <span className="font-extrabold text-2xl text-white">₹</span>
                       </div>
                     </div>
 
-                    <h3 className="text-xl font-bold text-white mb-2">Searching Player Database...</h3>
+                    <h3 className="text-xl font-bold text-white mb-2">Searching for Challenger...</h3>
                     <p className="text-xs text-slate-400 mb-8 leading-relaxed">
-                      Connecting to lobby nodes. Matching stats for stakes level of <span className="text-amber-400 font-bold">{betCoins} coins</span>.
+                      Lobby node matchmaking active. Looking for a real player with Entry Fee: <span className="text-emerald-400 font-bold">₹{betCoins}</span>.
                     </p>
 
                     <button 
@@ -257,7 +258,7 @@ export default function Dashboard({ user, onUpdateUser }) {
                     <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-500" />
                     
                     <div className="inline-flex px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 text-xs font-bold mb-8">
-                      ✓ Player Found! Battle Ready.
+                      ✓ Match Found! 1v1 Battle Ready.
                     </div>
                     
                     {/* Versus Cards */}
@@ -293,10 +294,9 @@ export default function Dashboard({ user, onUpdateUser }) {
                     </div>
 
                     <div className="bg-slate-900/40 p-4 rounded-2xl border border-slate-850 mb-8 flex justify-between items-center text-xs">
-                      <span className="text-slate-400">Total Pot Stakes</span>
-                      <span className="font-extrabold text-amber-400 text-sm flex items-center gap-1">
-                        <Coins size={14} />
-                        {betCoins * 2} Coins
+                      <span className="text-slate-400">Winning Prize Pool</span>
+                      <span className="font-extrabold text-emerald-400 text-sm flex items-center gap-1">
+                        ₹{betCoins * 1.8}
                       </span>
                     </div>
 
@@ -305,7 +305,7 @@ export default function Dashboard({ user, onUpdateUser }) {
                         onClick={cancelMatchmaking}
                         className="flex-1 bg-slate-900 hover:bg-slate-850 border border-slate-800 text-slate-400 font-bold py-3 rounded-xl text-xs transition-all"
                       >
-                        Decline
+                        Decline Match
                       </button>
                       <button 
                         onClick={() => alert("Launching Arena Board Simulator... Game initialized.")}
@@ -629,7 +629,7 @@ export default function Dashboard({ user, onUpdateUser }) {
       </main>
 
       {/* Mobile Bottom Navigation Dock */}
-      <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[92%] bg-slate-950/95 border border-slate-850/80 backdrop-blur-lg rounded-3xl shadow-2xl px-4 py-3 flex items-center justify-between">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 w-full bg-slate-950/95 border-t border-slate-900/80 backdrop-blur-lg px-6 py-3 pb-6 flex items-center justify-between shadow-2xl">
         {[
           { id: 'play', label: 'Play', icon: Gamepad2 },
           { id: 'wallet', label: 'Wallet', icon: Wallet },
@@ -643,12 +643,15 @@ export default function Dashboard({ user, onUpdateUser }) {
             <button 
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex flex-col items-center gap-1 text-[9px] font-bold transition-all ${
-                isActive ? 'text-indigo-400 scale-105' : 'text-slate-500 hover:text-slate-400'
+              className={`flex flex-col items-center gap-1 text-[10px] font-bold transition-all relative ${
+                isActive ? 'text-indigo-400 scale-105' : 'text-slate-500'
               }`}
             >
-              <Icon size={16} />
+              <Icon size={18} />
               <span>{tab.label}</span>
+              {isActive && (
+                <span className="absolute -top-1 w-1 h-1 bg-indigo-400 rounded-full" />
+              )}
             </button>
           );
         })}
